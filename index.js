@@ -5,6 +5,10 @@ const cors=require('cors')
 const productRouters=require('./routers/Products')
 const brandsRouter=require('./routers/Brands')
 const categoryRouter=require('./routers/Categories')
+const userRouter=require('./routers/User')
+const authRouter=require('./routers/Auth')
+const cartRouter=require('./routers/Cart')
+const orderRouter=require('./routers/Orders')
 server.use(express.json())
 async function dataBaseConnection(){
   try{
@@ -22,6 +26,10 @@ server.use(cors({
 server.use('/products',productRouters.router)
 server.use('/brands',brandsRouter.router)
 server.use('/categories',categoryRouter.router)
+server.use('/users',userRouter.router)
+server.use('/auth',authRouter.router)
+server.use('/cart',cartRouter.router)
+server.use('/orders',orderRouter.router)
 server.get('/',async (req,res)=>{
     res.json({status:"success"})
 })

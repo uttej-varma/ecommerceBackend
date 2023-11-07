@@ -4,7 +4,7 @@ const { createProduct, fetchAllProducts, fetchProductById,updateProductById } = 
 
 router.post('/',createProduct)
 router.get('/',fetchAllProducts)
-router.get('/:_id',fetchProductById)
-router.patch('/:_id',updateProductById)
+router.get('/:id',fetchProductById)
+router.patch('/:id',updateProductById)
 
 exports.router=router;
