@@ -25,7 +25,7 @@ exports.fetchAllProducts=async (req,res)=>{
   //pagination={_page:1,_limit:10}  //_page=1&_limit=10
   //ToDo:filter the products in the server side itself
        let totalDocsCount= Product.find({})
-        let query= Product.find({});
+        let query= Product.find({deleted:{$ne:true}});
        
         if(req.query.category_like)
         {
@@ -63,9 +63,9 @@ exports.fetchAllProducts=async (req,res)=>{
 };
 
 exports.fetchProductById=async (req,res)=>{
-    const {_id}=req.params
+    const _id=req.params.id
      try{
-        const product= await Product.findById({_id});
+        const product= await Product.findById(_id);
         res.status(200).json(
             product
         )
@@ -78,7 +78,7 @@ exports.fetchProductById=async (req,res)=>{
 }
 
 exports.updateProductById=async (req,res)=>{
-    const {_id}=req.params
+    const _id=req.params.id
      try{
         const product= await Product.findByIdAndUpdate(_id,req.body,{new:true});
         res.status(200).json(
