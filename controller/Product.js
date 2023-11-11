@@ -24,8 +24,12 @@ exports.fetchAllProducts=async (req,res)=>{
   //sort={_sort:"price",_order=desc}
   //pagination={_page:1,_limit:10}  //_page=1&_limit=10
   //ToDo:filter the products in the server side itself
-       let totalDocsCount= Product.find({})
-        let query= Product.find({deleted:{$ne:true}});
+       let totalDocsCount= Product.find({deleted:{$ne:true}})
+       let condition={};
+       if(!req.query.admin){
+          condition.deleted={$ne:true}
+       }
+        let query= Product.find(condition);
        
         if(req.query.category_like)
         {
