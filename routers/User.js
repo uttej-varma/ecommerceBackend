@@ -3,7 +3,7 @@ const { fetchLoggedInUser, updateUser } = require('../controller/User');
 const router=express.Router();
 
 
-router.get('/:id',fetchLoggedInUser)
-router.patch('/:id',updateUser)
+router.get('/own',fetchLoggedInUser)
+router.patch('/',updateUser)
 
 exports.router=router;
