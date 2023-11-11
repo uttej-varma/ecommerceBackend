@@ -62,5 +62,5 @@ exports.loginUser = async (req, res) => {
     expires: new Date(Date.now() + 3600000),
     httpOnly: true,
   }).
-  status(201).json(req.user.token);
+  status(201).json({id:req.user.id,role:req.user.role});
 };
